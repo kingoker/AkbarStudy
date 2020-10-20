@@ -1,0 +1,37 @@
+{% extends "layout/basic.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="wrapper-course">
+    <div class="video grey-shadow-drop">
+        <h1>{{ lesson.name }}</h1>
+        <div class="youtube"><iframe src="{{ lesson.url }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+    </div>
+    <div class="grey-shadow-drop">
+        <h3>Другие уроки</h3>
+        <div class="line"></div>
+        {% for lesson in lessons %}
+        <a href="{% url 'lesson' course.pk lesson.pk %}"><h2 class="pointer1">{{ lesson.name }}</h2></a>
+        {% endfor %}
+    </div>
+    <div class="hsomeworks grey-shadow-drop">
+        <h3>Описание</h3>
+        <div class="line"></div>
+        {% for lesson in lessons %}
+        <h2>{{ lesson.content }}</h2>
+        {% endfor %}
+    </div>
+    <div class="materials grey-shadow-drop">
+        <h3>Материалы к уроку</h3>
+        <div class="line"></div>
+        <img class="home" src="img/file.png" alt="F">
+        <a href="#"><h2 class="pointer1">Скоро</h2></a>
+    </div>
+    <div class="homework_done grey-shadow-drop">
+        <h3>Обратная связь</h3>
+        <div class="line"></div>
+        <a href="https://t.me/KINGokER"><div class="button_home">В Телеграмме</div></a>
+    </div>
+</div>
+{% endblock %}

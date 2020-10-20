@@ -1,0 +1,29 @@
+{% extends "layout/basic.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="wrapper">
+    <div class="content-course-page">
+        <h2 class="course-name">{{ course.name }}</h2>
+        <div></div>
+        <div class="left boxes grey-shadow-drop">
+            <div class="lessons">
+                {% for lesson in lessons %}
+                {% url 'lesson' course_id=course.pk lesson_id=lesson.pk as url %}
+                <a href="{{ url }}{{ all }}">{{ lesson.name }}</a>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="right boxes grey-shadow-drop">
+            <div class="imgBox">
+                <img src="img/avatar-3.jpg">
+            </div>
+            <div class="right_text">
+                <h3>Матсинова Малика <br><span>25 кирпичей</span></h3>
+                <p>Ваш прогресс:</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

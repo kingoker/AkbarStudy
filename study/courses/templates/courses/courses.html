@@ -1,0 +1,23 @@
+{% extends "layout/basic.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="wrapper">
+    {% for course in courses %}
+    <div class="greenbox .grey-shadow-drop">
+        <a href="{% url 'lessons' course.pk %}" class="right_box grey-shadow-drop">
+            {% if course.image %}
+                <img class="courses-image" src="{{ course.image.url }}" class="mr-3">
+            {% else %}
+                <img class="courses-image" src="{% static 'img/course-image.png' %}" >
+            {% endif %}
+        </a>
+        <div class="left_box grey-shadow-drop">
+            <a href="{% url 'lessons' course.pk %}"	class="h2">{{ course.name }}</a>
+            <p>{{ course.content|truncatewords_html:40|safe }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
